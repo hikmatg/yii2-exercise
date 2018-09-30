@@ -13,6 +13,7 @@ class m170911_093407_setup extends Migration
      */
     public function safeUp()
     {
+
         $this->createTable('user', [
             'id' => Schema::TYPE_PK,
             'first_name' => Schema::TYPE_TEXT . ' NOT NULL',
@@ -31,11 +32,13 @@ class m170911_093407_setup extends Migration
             'amount' => 'NUMERIC( 10, 2 ) NOT NULL',
             'interest' => 'NUMERIC( 10, 2 ) NOT NULL',
             'duration' => Schema::TYPE_INTEGER . ' NOT NULL',
-            'start_date' => Schema::TYPE_DATE . ' NOT NULL',
-            'end_date' => Schema::TYPE_DATE . ' NOT NULL',
+            'start_date' => Schema::TYPE_INTEGER . ' NOT NULL',
+            'end_date' => Schema::TYPE_INTEGER . ' NOT NULL',
             'campaign' => Schema::TYPE_INTEGER . ' NOT NULL',
-            'status' => Schema::TYPE_BOOLEAN
+            'status' => Schema::TYPE_SMALLINT
         ]);
+
+
     }
 
     /**
