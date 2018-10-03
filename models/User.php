@@ -61,5 +61,4 @@ class User extends \yii\db\ActiveRecord
             'lang' => 'Language',
         ];
     }
-
 }
