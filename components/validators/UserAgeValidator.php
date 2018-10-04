@@ -10,6 +10,7 @@ namespace app\components\validators;
 
 use yii\validators\Validator;
 use app\components\Helpers;
+use app\models\User;
 
 
 
@@ -18,13 +19,14 @@ class UserAgeValidator extends Validator
     /**
      * @inheritdoc
      */
-    public function validateValue($value)
+    public function validateValue($user_id)
     {
-        if(Helpers::exportAge($value) >= \Yii::$app->params['minimumLoanAge']){
+        $user = User::findOne($user_id);
+        if(Helpers::exportAge(strval($user->personal_code)) >= \Yii::$app->params['minimumLoanAge']){
             return null;
         }
         return [
-            'User must be at least 18 to get loan.', ['age' => $value]
+            'User must be at least {age} to get loan.', ['age' => \Yii::$app->params['minimumLoanAge']]
         ];
     }
 }

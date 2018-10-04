@@ -39,7 +39,6 @@ class User extends \yii\db\ActiveRecord
             ['lang', 'string', 'max' => 5],
             [['personal_code', 'phone'], 'default', 'value' => null],
             [['personal_code', 'phone'], 'integer'],
-            ['personal_code', UserAgeValidator::className()],
             [['active', 'dead'], 'boolean'],
         ];
     }
