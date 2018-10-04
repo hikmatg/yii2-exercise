@@ -13,7 +13,7 @@ class Helpers
 {
     /**
      * Exports age from personal code of a User
-     * @param string personal code of a User
+     * @param string $personal_code
      * @return integer age of a User
      */
     public static function exportAge($personal_code){

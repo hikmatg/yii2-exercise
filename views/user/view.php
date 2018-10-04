@@ -40,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'lang:ntext',
             [
                     'attribute' => 'age',
-                    'value' => Helpers::exportAge($model->personal_code)
+                    'value' => Helpers::exportAge(strval($model->personal_code))
             ]
         ],
     ]) ?>
