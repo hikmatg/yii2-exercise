@@ -1,0 +1,272 @@
+html,
+body {
+  height: 100%;
+}
+
+.wrap {
+  min-height: 100%;
+  height: auto;
+  margin: 0 auto -60px;
+  padding: 0 0 60px;
+
+   > .content {
+    padding: 150px 15px 20px;
+  }
+}
+
+.footer {
+  height: 60px;
+  background-color: #f5f5f5;
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
+}
+
+.not-set {
+  color: #c55;
+  font-style: italic;
+}
+
+/* add sorting icons to gridview sort links */
+a.asc:after, a.desc:after {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  padding-left: 5px;
+}
+
+a.asc:after {
+  content: /*"\e113"*/ "\e151";
+}
+
+a.desc:after {
+  content: /*"\e114"*/ "\e152";
+}
+
+.sort-numerical{
+  a.asc:after {
+    content: "\e153";
+  }
+  a.desc:after {
+    content: "\e154";
+  }
+}
+
+.sort-ordinal {
+  a.asc:after {
+    content: "\e155";
+  }
+  a.desc:after {
+    content: "\e156";
+  }
+}
+
+.grid-view th {
+  white-space: nowrap;
+}
+
+.hint-block {
+  display: block;
+  margin-top: 5px;
+  color: #999;
+}
+
+.error-summary {
+  color: #a94442;
+  background: #fdf7f7;
+  border-left: 3px solid #eed3d7;
+  padding: 10px 20px;
+  margin: 0 0 15px 0;
+}
+
+/* align the logout "link" (button in form) of the navbar */
+.nav li > form > button.logout {
+  padding: 15px;
+  border: none;
+}
+
+@media(max-width:767px) {
+  .nav li > form > button.logout {
+    display:block;
+    text-align: left;
+    width: 100%;
+    padding: 10px 15px;
+  }
+
+  .customer-service{
+    flex-direction: column !important;
+    &>*{
+      line-height: 30px !important;
+    }
+  }
+
+  .menu{
+    top: 90px !important;
+  }
+
+  .sub-menu{
+    top: 140px !important;
+  }
+
+  .wrap > .content {
+    padding: 200px 15px 20px;
+  }
+
+}
+
+.nav{
+  &>div {
+    &>form{
+      &>button.logout{
+        &:focus, &:hover{
+          text-decoration: none;
+        }
+        &:focus{
+          outline: none;
+        }
+      }
+    }
+  }
+}
+
+.cs-btn{
+  border: 2px solid white;
+  border-radius: 14px;
+
+  box-shadow: 0 1px 1px rgba(100, 100, 100, .6);
+  padding: 3px 12px;
+  &.less-padding{
+     padding: 1px 12px;
+  }
+
+  &:hover, &:focus, &:active{
+    border: 2px solid white !important;
+  }
+
+  &.orange-bg{
+    background: linear-gradient(to bottom, #e6c180, orange) !important;
+  }
+}
+
+.header{
+  min-height: 40px;
+  background-color: black;
+  color: white;
+
+  .container{
+    &:before, &:after {
+      display: none !important;
+    }
+  }
+}
+
+.customer-service-label{
+  font-size: 15px;
+}
+
+.contact, .contact-time{
+  font-size: 12px;
+  font-weight: bold;
+
+  img{
+    width: 12px;
+    height: 12px;
+  }
+}
+
+.flex-row{
+  display: flex;
+  flex-direction: row;
+
+  &>*{
+    line-height: 40px;
+    &:not(:last-child){
+      margin-right: 20px;
+    }
+  }
+
+  &.sb{
+    justify-content: space-between;
+  }
+}
+
+.menu{
+  top: 40px;
+}
+
+.navbar{
+  -webkit-box-shadow: 0 2px 8px #000;
+  -moz-box-shadow:  0 2px 8px #000;
+  box-shadow:  0 1px 5px rgba(100, 100, 100, .6);
+  a{
+    color: black !important;
+    font-weight: bold;
+    &:not(.navbar-brand){
+        &:after{
+          font-size: 13px;
+          margin-left: 5px;
+          font-weight: 900;
+          content: '>';
+          color: orange;
+        }
+
+      &:hover{
+        color: orange !important;
+      }
+    }
+  }
+  &.navbar-default{
+    background-color: white;
+    border: none;
+  }
+
+  @media(min-width:768px) {
+    .navbar-left{
+      margin-left: 50px;
+    }
+  }
+}
+
+.sub-menu{
+  top: 90px;
+  z-index: 1;
+  background-color: #f8f8f8;
+  .container{
+    padding-left: 50px;
+  }
+  a{
+    color: #777;
+    &:hover{
+      text-decoration: none;
+    }
+    
+  }
+}
+
+.table{
+  a{
+    color: black;
+  }
+
+  td:last-child{
+    a{
+      color: orange;
+    }
+  }
+}
+
+.pagination{
+  & > li {
+    a{
+      color: black;
+    }
+
+    &.active > a{
+      background-color: black;
+      border-color: black;
+    }
+  }
+}

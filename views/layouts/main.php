@@ -7,7 +7,6 @@ use app\widgets\Alert;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 
 AppAsset::register($this);
@@ -27,53 +26,62 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 
 <div class="wrap">
+    <div class="header navbar-fixed-top">
+        <div class="container flex-row sb">
+            <div class="flex-row customer-service">
+                <div class="customer-service-label">Customer service</div>
+                <div class="contact"><?= Html::img('/images/phone.svg', []) ?> 1715</div>
+                <div class="contact-time"><?= Html::img('/images/clock.svg', []) ?> E-P 9.00-21.00</div>
+            </div>
+            <div>
+                <?= Yii::$app->user->isGuest ? Html::a('Login', ['/site/login'],
+                    ['class' => 'btn btn-primary cs-btn orange-bg less-padding'])
+
+                    : (
+                        '<div>'
+                        . Html::beginForm(['/site/logout'], 'post')
+                        .'<span>Tere,'.Yii::$app->user->identity->username.'</span>&nbsp;&nbsp;'
+                        . Html::submitButton(
+                            'Logout',
+                            ['class' => 'btn btn-primary logout cs-btn orange-bg less-padding']
+                        )
+                        . Html::endForm()
+                        . '</div>'
+                    ) ?>
+            </div>
+
+        </div>
+    </div>
     <?php
     NavBar::begin([
-        'brandLabel' => 'My Company',
+        'brandLabel' => 'CREDITSTAR',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
+            'class' => 'navbar-default navbar-fixed-top menu',
         ],
     ]);
     echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
+        'options' => ['class' => 'navbar-nav navbar-left'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-            Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post')
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>'
-            )
+            ['label' => 'Credits', 'url' => 'https://www.creditstar.ee/rus/site/laenud'],
+            ['label' => 'Help', 'url' => 'https://www.creditstar.ee/est/site/help'],
+            ['label' => 'About', 'url' => 'https://www.creditstar.ee/est/site/firmast']
         ],
     ]);
     NavBar::end();
     ?>
-
-    <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
+    <div class="navbar-fixed-top sub-menu">
+        <div class="container flex-row">
+            <?= Html::a('Loans', ['/loan']) ?>
+            <?= Html::a('Users', ['/user']) ?>
+        </div>
+    </div>
+    <div class="container content">
         <?= Alert::widget() ?>
         <?= $content ?>
     </div>
 </div>
 
-<footer class="footer">
-    <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
-    </div>
-</footer>
 
 <?php $this->endBody() ?>
 </body>
